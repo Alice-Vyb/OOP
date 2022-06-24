@@ -4,7 +4,7 @@ class Dbh{
     $username,
     $password,
     $dbname;
-    function __construct(/*$hostname, $username, $password, $dbname*/){
+    function __construct(){
         $this->hostname = "localhost";//$hostname;
         $this->username = "root";//$username;
         $this->password = "";//$password;

@@ -50,7 +50,7 @@
             </h2>
         </div>
 
-        <form action="./action.php" method="POST" class="form" style="text-align: center; margin-top: 5%">
+        <form action="action.php" method="POST" class="form" style="text-align: center; margin-top: 5%">
             <button class="btn btn-primary" name="all">
                 Show All Users
             </button>
