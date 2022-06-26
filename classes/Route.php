@@ -30,7 +30,7 @@ class FormController extends UserAuth{
                 break;
             case isset($_POST['delete']):
                 //unpack all data for deleting
-                $this->email = $_POST['email'];
+                $this->email = $_POST['id'];
                 $this->deleteUser($this->email);
                 break;
             case isset($_POST['reset']):

@@ -81,9 +81,9 @@ class UserAuth extends Dbh{
         }
     }
 
-    public function deleteUser($email){
+    public function deleteUser($id){
         $conn = $this->db->connect();
-        $sql = "DELETE FROM Students WHERE email = '$email'";
+        $sql = "DELETE FROM Students WHERE id = '$id'";
         if($conn->query($sql) === TRUE){
              header("refresh:0.5; url=action.php?all");
         } else {
