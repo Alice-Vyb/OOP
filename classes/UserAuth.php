@@ -95,7 +95,7 @@ class UserAuth extends Dbh{
         $conn = $this->db->connect();
         $sql = "UPDATE students SET `password` = '$password' WHERE `email` = '$username'";
         if($conn->query($sql) === TRUE){
-            header("Location: ../UserAuthOOPMYSQL/dashboard.php?update=success");
+            header("Location: dashboard.php?update=success");
         } else {
             header("Location: forms/resetpassword.php?error=1");
         }
@@ -116,7 +116,7 @@ class UserAuth extends Dbh{
         if(isset($email)){
             session_destroy();
         } 
-         header('Location: ../UserAuthOOPMYSQL/index.php');
+         header('Location: index.php');
     }
 
     public function confirmPasswordMatch($password, $confirmPassword){
