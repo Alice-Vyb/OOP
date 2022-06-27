@@ -1,15 +1,10 @@
 <?php
 class Dbh{
-    public $hostname, 
-    $username,
-    $password,
-    $dbname;
-    function __construct(){
-        $this->hostname = "localhost";//$hostname;
-        $this->username = "root";//$username;
-        $this->password = "";//$password;
-        $this->dbname = "zuriphp";//$dbname;
-    }
+    public $hostname = "localhost", 
+    $username = "root",
+    $password = "",
+    $dbname = "zuriphp";
+    
     public function connect(){
         $db =  new mysqli($this->hostname, $this->username, $this->password, $this->dbname); 
        if ($db->connect_error) {
