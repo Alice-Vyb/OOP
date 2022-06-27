@@ -16,6 +16,4 @@ class Dbh{
     echo "Connected successfully";  
     }
 }
-$db = new Dbh();
- $db->connect();
 ?>
