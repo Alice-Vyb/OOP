@@ -3,20 +3,38 @@ session_start();
 include_once 'Dbh.php';
 
 class UserAuth extends Dbh{
-    public $db;
+    protected $db;
 
     public function __construct(){
     $this->db = new Dbh();
     }
 
+      public function checkEmailExist($email) {
+        $conn = $this->db->connect();
+
+        $query = "SELECT email FROM students WHERE email = ?";
+        $stmt = $conn->prepare($query);
+        $stmt->bind_param("s", $email);
+        $stmt->execute();
+        $result = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
+        
+        return ($result) ? true : false;
+        $stmt->close();
+    }
+    
     public function register($fullname, $email, $password, $confirmPassword, $country, $gender){
         $conn = $this->db->connect();
         if($this->confirmPasswordMatch($password, $confirmPassword)){
-            $sql = "INSERT INTO `Students` (`full_names`, `email`, `password`, `country`, `gender`) VALUES ('$fullname','$email', '$password', '$country', '$gender')";
-            if($conn->query($sql)){
-               echo "Ok";
+             if ($this->checkEmailExist($email)) {
+               echo 'email already exists'
+               ;
             } else {
-                echo "Opps". $conn->error;
+                $sql = "INSERT INTO Students (`full_names`, `email`, `password`, `country`, `gender`) VALUES ('$fullname','$email', '$password', '$country', '$gender')";
+                if($conn->query($sql)){
+                echo "Ok";
+                } else {
+                    echo "Opps". $conn->error;
+                }
             }
         }
 
